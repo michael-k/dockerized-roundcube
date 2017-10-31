@@ -1,7 +1,7 @@
 FROM alpine:3.6
 
-ARG VERSION=1.3.1
-ARG CHECKSUM='f071bbe84f90ba55582289dcef7b70198b81e0aedd4de8422945658bbee3da0b'
+ARG VERSION=1.3.2
+ARG CHECKSUM='83e4505df8f14a94313f4a8ccc88a0550e85d7798336b680f1040097fe93c50a'
 
 RUN apk -U upgrade \
 	&& apk add -t build-dependencies \
