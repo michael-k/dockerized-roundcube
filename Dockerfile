@@ -3,10 +3,9 @@ FROM alpine:3.6
 ARG VERSION=1.3.3
 ARG CHECKSUM='05d9856c966c0d93accabf724e7ff2fd493bba1a57c44247ed0a2aacd617c879'
 
-RUN apk -U upgrade \
-	&& apk add -t build-dependencies \
+RUN apk add --no-cache --virtual .build-dependencies \
 		openssl \
-	&& apk add \
+	&& apk add --no-cache \
 		ca-certificates \
 		php7 \
 		php7-dom \
@@ -32,7 +31,7 @@ RUN apk -U upgrade \
 	&& tar xzf roundcubemail-${VERSION}-complete.tar.gz \
 	&& mv /tmp/roundcubemail-${VERSION}/* /roundcubemail \
 	&& rm -rf /roundcubemail/installer \
-	&& apk del build-dependencies \
+	&& apk del .build-dependencies \
 	&& rm -rf /var/cache/apk/* /tmp/*
 
 COPY run.sh /usr/local/bin
