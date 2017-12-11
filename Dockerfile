@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.7
 
 ARG VERSION=1.3.3
 ARG CHECKSUM='05d9856c966c0d93accabf724e7ff2fd493bba1a57c44247ed0a2aacd617c879'
