@@ -1,7 +1,7 @@
 FROM alpine:3.7
 
 ARG VERSION=1.3.5
-ARG CHECKSUM='05d9856c966c0d93accabf724e7ff2fd493bba1a57c44247ed0a2aacd617c879'
+ARG CHECKSUM='634e98b3e422208d25aba0a0e5adf603833b4b9d32b5db6c1162a122f31b686b'
 
 RUN apk add --no-cache --virtual .build-dependencies \
 		openssl \
