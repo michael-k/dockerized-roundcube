@@ -25,14 +25,14 @@ RUN apk add --no-cache --virtual .build-dependencies \
 		su-exec \
 		tini \
 	&& cd /tmp \
-	&& wget -q "https://github.com/roundcube/roundcubemail/releases/download/${VERSION}/roundcubemail-${VERSION}-complete.tar.gz" \
-	&& if [ "${CHECKSUM}" != "$(sha256sum /tmp/roundcubemail-${VERSION}-complete.tar.gz | awk '{ print $1 }')" ]; \
+	&& wget -q "https://github.com/roundcube/roundcubemail/releases/download/${VERSION}/roundcubemail-${VERSION}-complete.tar.gz" -O roundcubemail.tar.gz \
+	&& if [ "${CHECKSUM}" != "$(sha256sum /tmp/roundcubemail.tar.gz | awk '{ print $1 }')" ]; \
 	then \
 		echo "Checksum does not match!" >&2; \
 		exit 1; \
 	fi \
 	&& mkdir /roundcubemail \
-	&& tar xzf roundcubemail-${VERSION}-complete.tar.gz \
+	&& tar xzf roundcubemail.tar.gz \
 	&& mv /tmp/roundcubemail-${VERSION}/* /roundcubemail \
 	&& rm -rf /roundcubemail/installer \
 	&& apk del .build-dependencies \
